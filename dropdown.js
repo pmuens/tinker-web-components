@@ -51,6 +51,10 @@ dropdownTemplate.innerHTML = `
       display: flex;
       flex-direction: column;
     }
+
+    .dropdown-list li.selected {
+      font-weight: 600;
+    }
   </style>
 
   <div class="dropdown">
@@ -122,13 +126,27 @@ class Dropdown extends HTMLElement {
 
   render() {
     this.$label.innerHTML = this.label;
-    this.$button.setAttribute("label", "Select Option");
+
+    if (this.options) {
+      this.$button.setAttribute("label", this.options[this.option].label);
+    }
 
     this.$dropdownList.innerHTML = "";
     Object.keys(this.options || {}).forEach((key) => {
       let option = this.options[key];
       let $option = document.createElement("li");
       $option.innerHTML = option.label;
+
+      if (this.option && this.option === key) {
+        $option.classList.add("selected");
+      }
+
+      $option.addEventListener("click", () => {
+        this.option = key;
+        this.toggleOpen();
+        this.render();
+      });
+
       this.$dropdownList.appendChild($option);
     });
   }
