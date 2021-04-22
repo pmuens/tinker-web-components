@@ -1,6 +1,6 @@
-const template = document.createElement("template");
+const buttonTemplate = document.createElement("template");
 
-template.innerHTML = `
+buttonTemplate.innerHTML = `
   <style>
     .container {
       padding: 8px;
@@ -40,7 +40,7 @@ class Button extends HTMLElement {
     super();
 
     this._shadowRoot = this.attachShadow({ mode: "open" });
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    this._shadowRoot.appendChild(buttonTemplate.content.cloneNode(true));
 
     this.$container = this._shadowRoot.querySelector(".container");
     this.$button = this._shadowRoot.querySelector("button");

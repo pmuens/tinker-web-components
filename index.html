@@ -7,13 +7,22 @@
     <title>Tinker - Web Components</title>
   </head>
   <body>
-    <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./button.js"></script>
+    <script type="text/javascript" src="./dropdown.js"></script>
 
     <my-button label="Click Me" as-atom></my-button>
-
     <script>
-      const element = document.querySelector("my-button");
-      element.addEventListener("onClick", (value) => console.log(value));
+      document
+        .querySelector("my-button")
+        .addEventListener("onClick", (value) => console.log(value));
+    </script>
+
+    <my-dropdown label="Dropdown" option="option2"></my-dropdown>
+    <script>
+      document.querySelector("my-dropdown").options = {
+        option1: { label: "Option 1" },
+        option2: { label: "Option 2" },
+      };
     </script>
   </body>
 </html>
