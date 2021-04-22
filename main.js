@@ -44,7 +44,11 @@ class Button extends HTMLElement {
 
     this.$button = this._shadowRoot.querySelector("button");
     this.$button.addEventListener("click", () => {
-      this.onClick("Hello from within the Custom Element");
+      this.dispatchEvent(
+        new CustomEvent("onClick", {
+          detail: "Hello from within the Custom Element",
+        })
+      );
     });
   }
 
