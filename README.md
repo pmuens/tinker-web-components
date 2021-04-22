@@ -2,6 +2,8 @@
 
 Playing around with [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
+Following the [tutorial](https://www.robinwieruch.de/web-components-tutorial) by Robin Wieruch.
+
 ## Setup
 
 1. Clone the repository
