@@ -23,6 +23,10 @@
         option1: { label: "Option 1" },
         option2: { label: "Option 2" },
       };
+
+      document
+        .querySelector("my-dropdown")
+        .addEventListener("onChange", (event) => console.log(event.detail));
     </script>
   </body>
 </html>

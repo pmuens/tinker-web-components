@@ -144,6 +144,7 @@ class Dropdown extends HTMLElement {
       $option.addEventListener("click", () => {
         this.option = key;
         this.toggleOpen();
+        this.dispatchEvent(new CustomEvent("onChange", { detail: key }));
         this.render();
       });
 
