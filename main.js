@@ -34,6 +34,7 @@ template.innerHTML = `
     <button>Label</button>
   </div>
 `;
+
 class Button extends HTMLElement {
   constructor() {
     super();
@@ -44,12 +45,15 @@ class Button extends HTMLElement {
     this.$button = this._shadowRoot.querySelector("button");
   }
 
+  get label() {
+    return this.getAttribute("label");
+  }
+
   static get observedAttributes() {
     return ["label"];
   }
 
-  attributeChangedCallback(name, oldVal, newVal) {
-    this[name] = newVal;
+  attributeChangedCallback() {
     this.render();
   }
 
