@@ -46,6 +46,11 @@ dropdownTemplate.innerHTML = `
       height: 40px;
       cursor: pointer;
     }
+
+    .dropdown.open .dropdown-list {
+      display: flex;
+      flex-direction: column;
+    }
   </style>
 
   <div class="dropdown">
@@ -66,9 +71,21 @@ class Dropdown extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(dropdownTemplate.content.cloneNode(true));
 
+    this.open = false;
+
     this.$label = this._shadowRoot.querySelector(".label");
     this.$button = this._shadowRoot.querySelector("my-button");
+    this.$dropdown = this._shadowRoot.querySelector(".dropdown");
     this.$dropdownList = this._shadowRoot.querySelector(".dropdown-list");
+
+    this.$button.addEventListener("onClick", this.toggleOpen.bind(this));
+  }
+
+  toggleOpen() {
+    this.open = !this.open;
+    this.open
+      ? this.$dropdown.classList.add("open")
+      : this.$dropdown.classList.remove("open");
   }
 
   get label() {
