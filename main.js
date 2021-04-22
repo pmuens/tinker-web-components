@@ -49,6 +49,10 @@ class Button extends HTMLElement {
     return this.getAttribute("label");
   }
 
+  set label(value) {
+    this.setAttribute("label", value);
+  }
+
   static get observedAttributes() {
     return ["label"];
   }

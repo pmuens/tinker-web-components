@@ -9,6 +9,11 @@
   <body>
     <script type="text/javascript" src="./main.js"></script>
 
-    <my-button label="Click Me"></my-button>
+    <my-button></my-button>
+
+    <script>
+      const element = document.querySelector("my-button");
+      element.label = "Click Me";
+    </script>
   </body>
 </html>
